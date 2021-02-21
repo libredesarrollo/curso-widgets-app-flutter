@@ -3,6 +3,7 @@ import 'package:rest_flutter/pages/buttons_page.dart';
 import 'package:rest_flutter/pages/chips_page.dart';
 
 import 'package:flutter/material.dart';
+import 'package:rest_flutter/pages/dragable/card_page.dart';
 import 'package:rest_flutter/pages/groups_page.dart';
 import 'package:rest_flutter/pages/images_page.dart';
 import 'package:rest_flutter/pages/login_page.dart';
@@ -28,6 +29,7 @@ class CustomDrawer {
     _DrawerItem(title: "Texto", icon:  Icons.list, route: TextsPage.ROUTE),
     _DrawerItem(title: "Image", icon:  Icons.image, route: ImagesPage.ROUTE),
     _DrawerItem(title: "Notas", icon:  Icons.note, route: ListPage.ROUTE),
+    _DrawerItem(title: "Cartas", icon:  Icons.card_giftcard, route: CardPage.ROUTE),
   ];
 
   static Widget getDrawer(BuildContext context){
