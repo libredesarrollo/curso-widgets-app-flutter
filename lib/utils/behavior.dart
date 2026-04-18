@@ -11,8 +11,9 @@ class Behavior{
       case "url":
         print("URL");
 
-        if(await canLaunch(behaviorModel.content1)){
-          await launch(behaviorModel.content1);
+        final uri = Uri.parse(behaviorModel.content1);
+        if(await canLaunchUrl(uri)){
+          await launchUrl(uri);
         }
 
         break;

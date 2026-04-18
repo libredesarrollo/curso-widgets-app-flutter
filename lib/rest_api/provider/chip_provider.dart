@@ -3,7 +3,7 @@ import 'package:rest_flutter/rest_api/provider/base_provider.dart';
 
 class ChipProvider extends BaseProvider {
   List<ChipModel> jsonArrayToList(List<dynamic> jsonList) {
-    List<ChipModel> chipsModel = List();
+    List<ChipModel> chipsModel = [];
 
     jsonList.forEach((item) {
       chipsModel.add(ChipModel.fromJsonMapToObject(item));
@@ -13,6 +13,6 @@ class ChipProvider extends BaseProvider {
   }
 
   Future<List<ChipModel>> getChips() async {
-    return await sendRequest('api/chip/all');
+    return (await sendRequest('api/chip/all')) as List<ChipModel>;
   }
 }

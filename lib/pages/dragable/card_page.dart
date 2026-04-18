@@ -10,13 +10,13 @@ class CardPage extends StatefulWidget {
 
 class _CardPageState extends State<CardPage>
     with SingleTickerProviderStateMixin {
-  List<Widget> cardList;
+  late List<Widget> cardList;
   bool _accepted = false;
   bool _inDT1 = false;
   bool _inDT2 = false;
 
-  AnimationController _animationController;
-  Animation<double> _animationCardOpacity;
+  late AnimationController _animationController;
+  late Animation<double> _animationCardOpacity;
 
   @override
   void initState() {
@@ -53,11 +53,11 @@ class _CardPageState extends State<CardPage>
               _inDT1 = false;
             });
           },
-          onWillAccept: (data) {
+          onWillAcceptWithDetails: (data) {
             print("onWillAccept $data");
             return true;
           },
-          onAccept: (data) {
+          onAcceptWithDetails: (data) {
             print("onAccept $data");
             _processResponse();
           },
@@ -92,11 +92,11 @@ class _CardPageState extends State<CardPage>
                 _inDT2 = false;
               });
             },
-            onWillAccept: (data) {
+            onWillAcceptWithDetails: (data) {
               print("onWillAccept $data");
               return true;
             },
-            onAccept: (data) {
+            onAcceptWithDetails: (data) {
               print("onAccept $data");
               _processResponse();
             },
@@ -126,7 +126,7 @@ class _CardPageState extends State<CardPage>
   }
 
   List<Widget> _getMatchCard() {
-    List<MatchCard> cards = List();
+    List<MatchCard> cards = [];
     cards.add(MatchCard(255, 0, 0));
     cards.add(MatchCard(0, 255, 0));
     cards.add(MatchCard(0, 0, 255));
@@ -137,7 +137,7 @@ class _CardPageState extends State<CardPage>
     cards.add(MatchCard(0, 255, 0));
     cards.add(MatchCard(0, 0, 255));
 
-    cardList = List();
+    cardList = [];
 
     for (int i = 0; i < cards.length; i++) {
       cardList.add(Draggable<String>(

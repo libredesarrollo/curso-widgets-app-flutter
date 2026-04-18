@@ -77,30 +77,33 @@ class _ListPageState extends State<ListPage> {
 
   Widget _createItem(int index) {
     return Slidable(
-      actionExtentRatio: 0.25,
+      key: ValueKey(items[index].id),
+      startActionPane: ActionPane(
+        motion: const StretchMotion(),
+        extentRatio: 0.25 * 2, // approximation for actionExtentRatio: 0.25 when there are 2 actions
+        children: [
+          SlidableAction(
+            label: 'Borrar',
+            backgroundColor: Colors.red,
+            icon: Icons.delete,
+            onPressed: (context) {
+              setState(() {
+                NoteProvider.deleteNote(items[index].id!);
+                items.removeAt(index);
+              });
+            },
+          ),
+          SlidableAction(
+            label: 'Editar',
+            backgroundColor: Colors.blueGrey,
+            icon: Icons.edit,
+            onPressed: (context) {
+              Navigator.pushNamed(context, SavePage.ROUTE, arguments: items[index]);
+            },
+          ),
+        ],
+      ),
       child: ListTile(title: Text(items[index].title)),
-      actionPane: SlidableStrechActionPane(),
-      actions: <Widget>[
-        IconSlideAction(
-          caption: 'Borrar',
-          color: Colors.red,
-          icon: Icons.delete,
-          onTap: () {
-            setState(() {
-              NoteProvider.deleteNote(items[index].id);
-              items.removeAt(index);
-            });
-          },
-        ),
-        IconSlideAction(
-          caption: 'Editar',
-          color: Colors.blueGrey,
-          icon: Icons.edit,
-          onTap: () {
-            Navigator.pushNamed(context, SavePage.ROUTE, arguments: items[index]);
-          },
-        ),
-      ],
     );
   }
 

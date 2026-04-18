@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:rest_flutter/pages/buttons_page.dart';
 import 'package:rest_flutter/pages/chips_page.dart';
 
@@ -7,7 +6,6 @@ import 'package:rest_flutter/pages/dragable/card_page.dart';
 import 'package:rest_flutter/pages/groups_page.dart';
 import 'package:rest_flutter/pages/images_page.dart';
 import 'package:rest_flutter/pages/login_page.dart';
-import 'package:rest_flutter/pages/mix_page.dart';
 import 'package:rest_flutter/pages/notes/list_page.dart';
 import 'package:rest_flutter/pages/texts_page.dart';
 import 'package:rest_flutter/rest_api/provider/user_provider.dart';
@@ -17,7 +15,7 @@ class _DrawerItem{
   IconData icon;
   String route;
 
-  _DrawerItem({this.title, this.icon, this.route});
+  _DrawerItem({required this.title, required this.icon, required this.route});
 }
 
 class CustomDrawer {

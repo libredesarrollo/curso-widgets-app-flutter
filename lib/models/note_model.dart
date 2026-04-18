@@ -1,9 +1,9 @@
 
 
 class NoteModel {
-  int id;
-  String title;
-  String content;
+  late int id;
+  late String title;
+  late String content;
 
   NoteModel.empty();
 

@@ -3,7 +3,7 @@ import 'package:rest_flutter/rest_api/provider/base_provider.dart';
 
 class PictureProvider extends BaseProvider {
   List<ImageModel> jsonArrayToList(List<dynamic> jsonList) {
-    List<ImageModel> imagesModel = List();
+    List<ImageModel> imagesModel = [];
 
     jsonList.forEach((item) {
       imagesModel.add(ImageModel.fromJsonMapToObject(item));
@@ -13,6 +13,6 @@ class PictureProvider extends BaseProvider {
   }
 
   Future<List<ImageModel>> getImages() async {
-    return await sendRequest('api/image/all');
+    return (await sendRequest('api/image/all')) as List<ImageModel>;
   }
 }

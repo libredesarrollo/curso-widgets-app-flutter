@@ -19,18 +19,18 @@ class _SavePageState extends State<SavePage> {
   String titleError = "";
   String contentError = "";
 
-  NoteModel noteModel;
+  NoteModel? noteModel;
 
   @override
   Widget build(BuildContext context) {
 
-    noteModel = ModalRoute.of(context).settings.arguments;
+    noteModel = ModalRoute.of(context)!.settings.arguments as NoteModel?;
 
     print("_____");
-    print(noteModel.id);
+    print(noteModel?.id);
 
-    titleController.text = noteModel.title;
-    contentController.text = noteModel.content;
+    titleController.text = noteModel?.title ?? "";
+    contentController.text = noteModel?.content ?? "";
 
     return Scaffold(
       key: _scaffoldKey,
@@ -56,7 +56,7 @@ class _SavePageState extends State<SavePage> {
                               labelText: "Título",
                               hintText: "Título"),
                           validator: (value) {
-                            if (value.isEmpty)
+                            if (value == null || value.isEmpty)
                               return "Por favor, coloque algo de texto";
                             return null;
                           },
@@ -75,15 +75,15 @@ class _SavePageState extends State<SavePage> {
                               labelText: "Contenido",
                               hintText: "Contenido"),
                           validator: (value) {
-                            if (value.isEmpty)
+                            if (value == null || value.isEmpty)
                               return "Por favor, coloque algo de texto";
                             return null;
                           },
                         ),
-                        RaisedButton(
+                        ElevatedButton(
                           child: Text("Enviar"),
                           onPressed: () {
-                            if (_formKey.currentState.validate()) {
+                            if (_formKey.currentState!.validate()) {
                               createNote();
                             }
                           },
@@ -103,7 +103,7 @@ class _SavePageState extends State<SavePage> {
     titleError = "";
 
     final Map map = await NoteProvider.saveNote(
-        titleController.text, contentController.text, noteModel.id);
+        titleController.text, contentController.text, noteModel?.id);
 
     if (map['code'] != 200) {
       if (map['title'] != null) {
@@ -114,7 +114,7 @@ class _SavePageState extends State<SavePage> {
       }
     } else {
       final sb = SnackBar(content: Text('Nota creada con éxito'));
-      _scaffoldKey.currentState.showSnackBar(sb);
+      ScaffoldMessenger.of(context).showSnackBar(sb);
     }
 
     setState(() {});

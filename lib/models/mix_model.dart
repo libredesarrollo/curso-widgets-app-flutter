@@ -10,9 +10,9 @@ import 'package:rest_flutter/widgets/image_widget.dart';
 import 'package:rest_flutter/widgets/text_widget.dart';
 
 class MixModel {
-  String widget;
-  Object object;  
-  Function fun;
+  late String widget;
+  late Object object;  
+  late Function fun;
   
   MixModel.constructor(String widget){
     this.widget = widget;

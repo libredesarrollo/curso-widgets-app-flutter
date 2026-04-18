@@ -5,13 +5,13 @@ import 'package:rest_flutter/utils/key.dart';
 import 'package:rest_flutter/widgets/button_widget.dart';
 
 class ButtonModel {
-  String text;
-  String colorBg;
-  String color;
-  String type;
-  bool behavior;
-  BehaviorModel behaviorModel;
-  Function fun;
+  late String text;
+  late String colorBg;
+  late String color;
+  late String type;
+  late bool behavior;
+  late BehaviorModel behaviorModel;
+  late Function fun;
   
   ButtonModel.constructor(String text, String colorBg,String color, String type){
     this.colorBg = colorBg;

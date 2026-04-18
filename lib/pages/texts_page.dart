@@ -24,7 +24,7 @@ class TextsPage extends StatelessWidget with PageComponent{
    */
 
   List<TextModel> getData() {
-    List<TextModel> textModels = List();
+    List<TextModel> textModels = [];
 
     for (int i = 0; i < 5; i++)
       textModels.add(TextModel.constructor("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio, consequatur nesciunt! Inventore mollitia necessitatibus incidunt quos sint placeat nobis saepe id maiores aspernatur temporibus explicabo odio sunt, accusamus earum libero! cosa"));

@@ -18,21 +18,21 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
-  http: #https://pub.dev/packages/http#-installing-tab-
-  flutter_slidable: #https://github.com/letsar/flutter_slidable
-  url_launcher: #https://pub.dev/packages/url_launcher/install
-  shared_preferences: #https://pub.dev/packages/shared_preferences/install
-  rflutter_alert: #https://pub.dev/packages/rflutter_alert/install
+  http: ^1.2.0
+  flutter_slidable: ^3.1.1
+  url_launcher: ^6.2.6
+  shared_preferences: ^2.2.3
+  rflutter_alert: ^2.0.7
   flutter:
     sdk: flutter
 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.6
 
 dev_dependencies:
   flutter_test:

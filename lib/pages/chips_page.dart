@@ -27,7 +27,7 @@ class ChipsPage extends StatelessWidget with PageComponent{
    */
 
   List<ChipModel> getData() {
-    List<ChipModel> chipModels = List();
+    List<ChipModel> chipModels = [];
 
     for (int i = 0; i < 8; i++)
       chipModels.add(ChipModel.constructor(

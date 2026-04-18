@@ -1,11 +1,11 @@
 import 'package:rest_flutter/utils/key.dart';
 
 class BehaviorModel {
-  int behavioralId;
-  String behavioralType;
-  String behavioralModel;
-  String content1;
-  String content2;
+  late int behavioralId;
+  late String behavioralType;
+  late String behavioralModel;
+  late String content1;
+  late String content2;
 
   BehaviorModel.fromJsonMapToObject(Map<String, dynamic> item){
 

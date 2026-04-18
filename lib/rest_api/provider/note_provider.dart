@@ -8,7 +8,7 @@ class NoteProvider {
   static int lastPage = 0;
 
   static Future<List<NoteModel>> _sendRequest(String token) async {
-    final res = await http.get(_BASEURL + token);
+    final res = await http.get(Uri.parse(_BASEURL + token));
 
     print(res.body);
 
@@ -19,7 +19,7 @@ class NoteProvider {
   }
 
   static List<NoteModel> _jsonArrayToList(List<dynamic> jsonList) {
-    List<NoteModel> notesModel = List();
+    List<NoteModel> notesModel = [];
 
     jsonList.forEach((item) {
       notesModel.add(NoteModel.fromJsonMapToObject(item));
@@ -33,14 +33,13 @@ class NoteProvider {
   }
 
   static deleteNote(int id) {
-    http.delete(_BASEURL + 'api/note/$id');
+    http.delete(Uri.parse(_BASEURL + 'api/note/$id'));
   }
 
-  static Future<Map> saveNote(String title, String content, [int id]) async {
+  static Future<Map> saveNote(String title, String content, [int? id]) async {
     final form = {'title': title, 'content': content};
-    final res = id is int
-        ? await http.patch(_BASEURL + 'api/note/$id', body: form)
-        : await http.post(_BASEURL + 'api/note', body: form);
+    final uri = id == null ? Uri.parse(_BASEURL + 'api/note') : Uri.parse(_BASEURL + 'api/note/$id');
+    final res = await http.patch(uri, body: form);
 
     final data = json.decode(res.body);
 

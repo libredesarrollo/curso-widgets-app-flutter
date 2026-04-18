@@ -45,7 +45,7 @@ class ButtonsPage extends StatelessWidget with PageComponent {
    */
 
   List<ButtonModel> getData() {
-    List<ButtonModel> buttonModels = List();
+    List<ButtonModel> buttonModels = [];
 
     for (int i = 0; i < 3; i++)
       buttonModels.add(

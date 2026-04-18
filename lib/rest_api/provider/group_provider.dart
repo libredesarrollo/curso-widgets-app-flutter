@@ -4,7 +4,7 @@ import 'package:rest_flutter/rest_api/provider/base_provider.dart';
 class GroupProvider extends BaseProvider{
 
   List<GroupModel> jsonArrayToList(List<dynamic> jsonList){
-    List<GroupModel> groupsModel = List();
+    List<GroupModel> groupsModel = [];
 
     jsonList.forEach((item) {
       groupsModel.add(GroupModel.fromJsonMapToObject(item));
@@ -14,7 +14,7 @@ class GroupProvider extends BaseProvider{
   }
 
   Future<List<GroupModel>> getGroups() async{
-    return await sendRequest('api/group/all');
+    return (await sendRequest('api/group/all')) as List<GroupModel>;
   }
 
 }

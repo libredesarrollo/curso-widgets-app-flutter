@@ -3,13 +3,13 @@ import 'package:rest_flutter/utils/key.dart';
 import 'package:rest_flutter/widgets/chip_widget.dart';
 
 class ChipModel {
-  String colorIcon;
-  String colorBg;
-  String label;
-  String icon;
-  bool behavior;
-  BehaviorModel behaviorModel;
-  Function fun;
+  late String colorIcon;
+  late String colorBg;
+  late String label;
+  late String icon;
+  late bool behavior;
+  late BehaviorModel behaviorModel;
+  late Function fun;
 
   ChipModel.constructor(
       String colorIcon, String colorBg, String label, String icon) {

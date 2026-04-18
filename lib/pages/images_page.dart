@@ -24,7 +24,7 @@ class ImagesPage extends StatelessWidget with PageComponent{
    */
 
   List<ImageModel> getData() {
-    List<ImageModel> imageModels = List();
+    List<ImageModel> imageModels = [];
 
     for (int i = 0; i < 2; i++)
       imageModels.add(ImageModel.constructor("https://cdn.pixabay.com/photo/2019/08/14/10/34/greece-4405357_1280.jpg"));

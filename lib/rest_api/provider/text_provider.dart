@@ -3,7 +3,7 @@ import 'package:rest_flutter/rest_api/provider/base_provider.dart';
 
 class TextProvider extends BaseProvider {
   List<TextModel> jsonArrayToList(List<dynamic> jsonList) {
-    List<TextModel> textsModel = List();
+    List<TextModel> textsModel = [];
 
     jsonList.forEach((item) {
       textsModel.add(TextModel.fromJsonMapToObject(item));
@@ -13,6 +13,6 @@ class TextProvider extends BaseProvider {
   }
 
   Future<List<TextModel>> getTexts() async {
-    return await sendRequest('api/text/all');
+    return (await sendRequest('api/text/all')) as List<TextModel>;
   }
 }

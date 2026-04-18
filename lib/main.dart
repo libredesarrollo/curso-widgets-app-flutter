@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
 
   final String initialRoute;
 
-  const MyApp({this.initialRoute}) : super();
+  const MyApp({required this.initialRoute, Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {

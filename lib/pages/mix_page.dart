@@ -13,30 +13,28 @@ class MixPage extends StatelessWidget with PageComponent {
   @override
   Widget build(BuildContext context) {
 
-    GroupModel groupModel;
-    String urlMix;
+    GroupModel? groupModel;
+    String? urlMix;
 
-    if(ModalRoute.of(context).settings.arguments is String){
-      urlMix = ModalRoute.of(context).settings.arguments;
+    if(ModalRoute.of(context)!.settings.arguments is String){
+      urlMix = ModalRoute.of(context)!.settings.arguments as String;
     }else{
-      groupModel = ModalRoute.of(context).settings.arguments;
+      groupModel = ModalRoute.of(context)!.settings.arguments as GroupModel;
     }
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(groupModel != null ? groupModel.name : urlMix),
+        title: Text(groupModel?.name ?? "Mix"),
       ),
       drawer: CustomDrawer.getDrawer(context),
-      body: urlMix != null ?
-      futureBuilderMixUrl(MixProvider.getMixsUrl, urlMix, context) :
-      futureBuilderMix(MixProvider.getMixs,groupModel.id, context)//Column(children: _buildWidget()),
+      body: futureBuilderMixUrl(MixProvider.getMixsUrl, urlMix ?? "", context)//Column(children: _buildWidget()),
     );
   }
 
   List<Widget> _buildWidget(){
     List models = getData();
 
-    List<Widget> widgets = List();
+    List<Widget> widgets = [];
     models.forEach((model) {
       widgets.add(model.fun(model));
     });
@@ -49,7 +47,7 @@ class MixPage extends StatelessWidget with PageComponent {
    */
 
   List getData() {
-    List models = List();
+    List models = [];
 
     for (int i = 0; i < 3; i++)
       models.add(ButtonModel.constructor(

@@ -15,7 +15,7 @@ class BaseProvider {
       'authorization' : userPreference.token
     };
     
-    final res = await http.get(_BASEURL+token+"?format=json", headers: headers); //?format=json para django
+    final res = await http.get(Uri.parse(_BASEURL+token+"?format=json"), headers: headers); //?format=json para django
 
     print(res.body);
 
@@ -24,7 +24,7 @@ class BaseProvider {
     return jsonArrayToList(data['data']);
   }
 
-  List jsonArrayToList(List<dynamic> jsonList){return null;}
+  List jsonArrayToList(List<dynamic> jsonList){return [];}
 
 
 }

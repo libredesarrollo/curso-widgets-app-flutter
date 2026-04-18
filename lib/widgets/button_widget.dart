@@ -19,29 +19,31 @@ class ButtonWidget {
 
     switch(buttonModel.type){
       case "flat":
-      return FlatButton(
-        color: Color(int.parse(buttonModel.colorBg, radix: 16)),
-        textColor: Color(int.parse(buttonModel.color, radix: 16)),
-        splashColor: Color(int.parse(buttonModel.color, radix: 16)),
+      return TextButton(
+        style: TextButton.styleFrom(
+          backgroundColor: Color(int.parse(buttonModel.colorBg, radix: 16)),
+          foregroundColor: Color(int.parse(buttonModel.color, radix: 16)),
+        ),
         child: Text(buttonModel.text),
         onPressed: (){
           if(buttonModel.behavior){
             print("comportamiento");
-            Behavior.process(buttonModel.behaviorModel, context);
+            Behavior.process(buttonModel.behaviorModel!, context);
           }
         },
       );
       //case "raised":
       default:
-      return RaisedButton(
-        color: Color(int.parse(buttonModel.colorBg, radix: 16)),
-        textColor: Color(int.parse(buttonModel.color, radix: 16)),
-        splashColor: Color(int.parse(buttonModel.color, radix: 16)),
+      return ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color(int.parse(buttonModel.colorBg, radix: 16)),
+          foregroundColor: Color(int.parse(buttonModel.color, radix: 16)),
+        ),
         child: Text(buttonModel.text),
         onPressed: (){
           if(buttonModel.behavior){
             print("comportamiento");
-            Behavior.process(buttonModel.behaviorModel, context);
+            Behavior.process(buttonModel.behaviorModel!, context);
           }
         },
       );

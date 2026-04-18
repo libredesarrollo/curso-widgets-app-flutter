@@ -1,7 +1,7 @@
 
 class GroupModel {
-  int id;
-  String name;
+  late int id;
+  late String name;
 
   GroupModel.constructor(String name){
     this.name = name;

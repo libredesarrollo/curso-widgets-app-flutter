@@ -8,10 +8,10 @@ import 'package:rest_flutter/utils/user_preference.dart';
 class UserProvider {
   static const String _BASEURL = Key.BASEURL;
 
-  static Future<String> login(String username, String password) async {
+  static Future<String?> login(String username, String password) async {
     final dataPost = {'username': username, 'password': password};
 
-    final res = await http.post(_BASEURL + 'api/login', body: dataPost);
+    final res = await http.post(Uri.parse(_BASEURL + 'api/login'), body: dataPost);
 
     final data = json.decode(res.body);
 
@@ -21,7 +21,7 @@ class UserProvider {
     return data['token'];
   }
 
-  static Future<String> logout() async {
+  static Future<void> logout() async {
     final userPreference = UserPreference();
 
     Map<String, String> headers = {
@@ -29,7 +29,7 @@ class UserProvider {
       'authorization': userPreference.token
     };
 
-    http.post(_BASEURL + 'api/logout', headers: headers);
+    http.post(Uri.parse(_BASEURL + 'api/logout'), headers: headers);
 
     userPreference.token = "";
   }
@@ -43,7 +43,7 @@ class UserProvider {
     };
 
     final res = await http.get(
-      _BASEURL + 'api/verify', headers: headers
+      Uri.parse(_BASEURL + 'api/verify'), headers: headers
     );
 
     final data = json.decode(res.body);

@@ -1,10 +1,8 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:rest_flutter/pages/groups_page.dart';
 import 'package:rest_flutter/rest_api/provider/user_provider.dart';
 import 'package:rest_flutter/utils/user_preference.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginPage extends StatefulWidget {
   static const String ROUTE = "/login";
@@ -66,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
     return TextFormField(
       maxLength: 20,
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           return "Tienes que colocar algun valor";
         }
         return null;
@@ -81,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
     return TextFormField(
       maxLength: 20,
       validator: (value) {
-        if (value.isEmpty) {
+        if (value == null || value.isEmpty) {
           return "Tienes que colocar algun valor";
         }
         return null;
@@ -94,12 +92,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget _sendDataFormButton(BuildContext context) {
-    return RaisedButton(
-      color: Theme.of(context).accentColor,
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+      ),
       onPressed: buttonSending
           ? null
           : () async {
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 // login
 
                 setState(() {
@@ -113,18 +114,10 @@ class _LoginPageState extends State<LoginPage> {
                   buttonSending = false;
                 });
 
-                if (token != null) {
-                  final userPreference = UserPreference();
-                  userPreference.token = token;
+                final userPreference = UserPreference();
+                userPreference.token = token;
 
-                  Navigator.pushReplacementNamed(context, GroupsPage.ROUTE);
-                } else {
-                  Alert(
-                          context: context,
-                          title: "Error",
-                          desc: "Usuario y/o contraseña inválido")
-                      .show();
-                }
+                Navigator.pushReplacementNamed(context, GroupsPage.ROUTE);
               } else {
                 print("Problemas en el form");
               }
@@ -137,7 +130,6 @@ class _LoginPageState extends State<LoginPage> {
           textAlign: TextAlign.center,
         ),
       ),
-      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 25),
     );
   }
 }

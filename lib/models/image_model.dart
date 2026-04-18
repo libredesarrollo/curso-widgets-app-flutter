@@ -3,11 +3,11 @@ import 'package:rest_flutter/utils/key.dart';
 import 'package:rest_flutter/widgets/image_widget.dart';
 
 class ImageModel {
-  String url;
-  String name;
-  bool behavior;
-  BehaviorModel behaviorModel;
-  Function fun;
+  late String url;
+  late String name;
+  late bool behavior;
+  late BehaviorModel behaviorModel;
+  late Function fun;
 
   ImageModel.constructor(String url) {
     this.url = url;

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rest_flutter/components/page_component.dart';
-import 'package:rest_flutter/models/button_model.dart';
 import 'package:rest_flutter/models/group_model.dart';
 import 'package:rest_flutter/pages/mix_page.dart';
-import 'package:rest_flutter/rest_api/provider/button_provider.dart';
 import 'package:rest_flutter/rest_api/provider/group_provider.dart';
 import 'package:rest_flutter/utils/custom_drawer.dart';
 
@@ -36,10 +34,10 @@ class GroupsPage extends StatelessWidget with PageComponent {
       builder:
           (BuildContext context, AsyncSnapshot<List<GroupModel>> groupsSnap) {
         if (groupsSnap.hasData) {
-          List<Widget> buttons = List();
+          List<Widget> buttons = [];
 
-          groupsSnap.data.forEach((group) {
-            buttons.add(RaisedButton(
+          groupsSnap.data!.forEach((group) {
+            buttons.add(ElevatedButton(
               child: Text(group.name),
               onPressed: () {
                 Navigator.pushNamed(context, MixPage.ROUTE, arguments: group);

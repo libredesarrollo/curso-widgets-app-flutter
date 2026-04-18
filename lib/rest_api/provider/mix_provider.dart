@@ -7,7 +7,7 @@ class MixProvider {
    static const String _BASEURL = Key.BASEURL;
 
   static Future<List<MixModel>> _sendRequest(String token) async {
-    final res = await http.get(_BASEURL+token);
+    final res = await http.get(Uri.parse(_BASEURL+token));
 
     print(res.body);
 
@@ -17,7 +17,7 @@ class MixProvider {
   }
 
   static List<MixModel> _jsonArrayToList(List<dynamic> jsonList){
-    List<MixModel> mixsModel = List();
+    List<MixModel> mixsModel = [];
 
     jsonList.forEach((item) {
       mixsModel.add(MixModel.fromJsonMapToObject(item));

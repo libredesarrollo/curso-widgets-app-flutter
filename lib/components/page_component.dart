@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class PageComponent {
+mixin PageComponent {
   List<Widget> buildWidgets(List models, Function build, BuildContext context) {
-    List<Widget> widgets = List();
-    models.forEach((model) {
+    List<Widget> widgets = <Widget>[];
+    for (var model in models) {
       widgets.add(build(model, context));
-    });
+    }
 
     return widgets;
   }
@@ -19,7 +19,7 @@ class PageComponent {
       builder: (BuildContext context, AsyncSnapshot<List> buttonsSnap) {
         if (buttonsSnap.hasData) {
           return Column(
-              children: buildWidgets(buttonsSnap.data, build, context));
+              children: buildWidgets(buttonsSnap.data!, build, context));
         } else {
           print("Cargando");
           return CircularProgressIndicator();
@@ -33,12 +33,12 @@ class PageComponent {
       future: future(groupId),
       builder: (BuildContext context, AsyncSnapshot<List> buttonsSnap) {
         if (buttonsSnap.hasData) {
-          final mixsModel = buttonsSnap.data;
-          List<Widget> widgets = List();
+          final mixsModel = buttonsSnap.data!;
+          List<Widget> widgets = <Widget>[];
 
-          mixsModel.forEach((mix) {
+          for (var mix in mixsModel) {
             widgets.add(buildWidget(mix.object, mix.object.fun, context));
-          });
+          }
 
           return Column(children: widgets);
         } else {
@@ -54,12 +54,12 @@ class PageComponent {
       future: future(url),
       builder: (BuildContext context, AsyncSnapshot<List> buttonsSnap) {
         if (buttonsSnap.hasData) {
-          final mixsModel = buttonsSnap.data;
-          List<Widget> widgets = List();
+          final mixsModel = buttonsSnap.data!;
+          List<Widget> widgets = <Widget>[];
 
-          mixsModel.forEach((mix) {
+          for (var mix in mixsModel) {
             widgets.add(buildWidget(mix.object, mix.object.fun, context));
-          });
+          }
 
           return Column(children: widgets);
         } else {
