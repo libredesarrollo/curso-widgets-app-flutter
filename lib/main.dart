@@ -12,8 +12,7 @@ import 'package:rest_flutter/pages/texts_page.dart';
 import 'package:rest_flutter/rest_api/provider/user_provider.dart';
 import 'package:rest_flutter/utils/user_preference.dart';
 
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final userPreference = UserPreference();
@@ -24,20 +23,20 @@ void main() async{
     initialRoute = GroupsPage.ROUTE;
   }*/
 
-  final initialRoute = userPreference.token != '' && await UserProvider.verify() ? CardPage.ROUTE : LoginPage.ROUTE;
+  final initialRoute = userPreference.token != '' && await UserProvider.verify()
+      ? CardPage.ROUTE
+      : LoginPage.ROUTE;
 
   runApp(MyApp(initialRoute: initialRoute));
 }
 
 class MyApp extends StatelessWidget {
-
   final String initialRoute;
 
   const MyApp({required this.initialRoute, Key? key}) : super(key: key);
-  
+
   @override
   Widget build(BuildContext context) {
-
     final userPreference = UserPreference();
 
     print(userPreference.token);
@@ -54,7 +53,7 @@ class MyApp extends StatelessWidget {
         ListPage.ROUTE: (BuildContext context) => ListPage(),
         SavePage.ROUTE: (BuildContext context) => SavePage(),
         LoginPage.ROUTE: (BuildContext context) => LoginPage(),
-        CardPage.ROUTE: (BuildContext context) => CardPage()
+        CardPage.ROUTE: (BuildContext context) => CardPage(),
       },
     );
   }
